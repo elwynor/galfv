@@ -1,0 +1,7 @@
+; Filename: GALFV_EXP.DEF
+LIBRARY GALFV.DLL
+; File Viewer - Copyright (c) 2026 Elwynor Technologies
+; Export alias for the module entry point (Win32 / x86 build).
+; The BBS calls init__<modname>; the decorated cdecl symbol is _init__galfv.
+EXPORTS
+	_init__galfv=init__galfv	@1

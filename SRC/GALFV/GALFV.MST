@@ -1,0 +1,279 @@
+LEVEL6 {File Viewer}
+
+WELCOME {<ESC>[0;1;36m
+File Viewer v<TV:GALFV_VERSION>
+} T Shown when a user enters the library
+
+LISTHDR {<ESC>[0;1;36m
+  ##  Document         Title
+<ESC>[0;34m ---- ---------------- -----------------------------------------------
+} T Document list heading
+
+LISTROW {<ESC>[1;37m<TV:GALFV_NUM:R:4>  <ESC>[1;33m<TV:GALFV_DOC:L:16> <ESC>[0;36m<TV:GALFV_TITLE>
+} T One row of the document list
+
+LISTROWH {<ESC>[1;37m<TV:GALFV_NUM:R:4>  <ESC>[1;33m<TV:GALFV_DOC:L:16> <ESC>[0;36m<TV:GALFV_TITLE> <ESC>[0;35m(hidden)
+} T One row of the document list, for a hidden document (sysops only)
+
+LISTNONE {<ESC>[0;36m
+  The library is empty.
+} T The document list has nothing to show
+
+LISTMORE {<ESC>[0;36m  (Press Enter to see more documents)
+} T More documents follow on the next page of the list
+
+LIBPRU {<ESC>[0;1;36m
+Document number or name, <ESC>[1;37mL<ESC>[1;36m to list again, <ESC>[1;37mX<ESC>[1;36m to exit: } T Library prompt for users
+
+LIBPRA {<ESC>[0;1;36m
+Number or name, <ESC>[1;37mA<ESC>[1;36mdd, <ESC>[1;37mE<ESC>[1;36mdit, <ESC>[1;37mD<ESC>[1;36melete, <ESC>[1;37mH<ESC>[1;36meaders, <ESC>[1;37mL<ESC>[1;36mist, <ESC>[1;37mX<ESC>[1;36m to exit: } T Library prompt for users who may add documents
+
+LIBPRS {<ESC>[0;1;36m
+Number or name, <ESC>[1;37mA<ESC>[1;36mdd, <ESC>[1;37mE<ESC>[1;36mdit, <ESC>[1;37mD<ESC>[1;36melete, <ESC>[1;37mH<ESC>[1;36meaders, <ESC>[1;37mF<ESC>[1;36mile, <ESC>[1;37mS<ESC>[1;36mettings, <ESC>[1;37mL<ESC>[1;36mist, <ESC>[1;37mX<ESC>[1;36mit: } T Library prompt for sysops
+
+LIBHELP {<ESC>[0;35m
+Type a document's number or name to view it.  Enter shows the next page
+of the list, L lists from the top and X leaves.  Authors can also use
+A to add a document, E to change one, D to delete one and H for the
+headers shown above documents.  Sysops can use F to view any file on the
+server by path and S for the settings.
+} T Library help
+
+NODOC {<ESC>[1;31m
+There is no document called <TV:GALFV_DOC>.
+} T Unknown document name
+
+NOACCESS {<ESC>[1;31m
+You do not have access to <TV:GALFV_DOC>.
+} T The user lacks the key a document requires
+
+BADNUM {<ESC>[1;31m
+That number is not on the list.
+} T Document number out of range
+
+NOOPEN {<ESC>[1;31m
+Cannot open <TV:GALFV_FILE>.
+} T A file could not be opened
+
+CREATEQ {<ESC>[0;1;36m
+The document <ESC>[1;33m<TV:GALFV_DOC><ESC>[1;36m does not exist yet.  Create it now (<ESC>[1;37mY<ESC>[1;36m/<ESC>[1;37mN<ESC>[1;36m)? } T A menu link names a document that has not been created
+
+RAWASK {<ESC>[0;1;36m
+Full path of the server file to view (Enter to cancel): } T Sysop: path of a server file to view
+
+EDWHICH {<ESC>[0;1;36m
+Name of the document to change (Enter to cancel): } T Which document to change
+
+DELWHICH {<ESC>[0;1;36m
+Name of the document to delete (Enter to cancel): } T Which document to delete
+
+PGCLS {<ESC>[0m<ESC>[2J<ESC>[H} T Clears the screen before each page (ANSI users)
+
+PGSEP {
+} T Separates pages for users without ANSI
+
+PGBOTH {<ESC>[0;36m
+<ESC>[1;37mN<ESC>[0;36mext <ESC>[1;37mP<ESC>[0;36mrev <ESC>[1;37mT<ESC>[0;36mop <ESC>[1;37mC<ESC>[0;36montinuous <ESC>[1;37mK<ESC>[0;36meyword <ESC>[1;37mB<ESC>[0;36maud <ESC>[1;37mX<ESC>[0;36mit  Page <TV:GALFV_PAGE> (<TV:GALFV_PCT>%%): } T Page prompt with next and previous pages
+
+PGNEXT {<ESC>[0;36m
+<ESC>[1;37mN<ESC>[0;36mext <ESC>[1;37mC<ESC>[0;36montinuous <ESC>[1;37mK<ESC>[0;36meyword <ESC>[1;37mB<ESC>[0;36maud <ESC>[1;37mX<ESC>[0;36mit  Page <TV:GALFV_PAGE> (<TV:GALFV_PCT>%%): } T Page prompt on the first page
+
+PGPREV {<ESC>[0;36m
+End.  <ESC>[1;37mP<ESC>[0;36mrev <ESC>[1;37mT<ESC>[0;36mop <ESC>[1;37mK<ESC>[0;36meyword <ESC>[1;37mB<ESC>[0;36maud <ESC>[1;37mX<ESC>[0;36mit (or Enter)  Page <TV:GALFV_PAGE>: } T Page prompt on the last page
+
+PGONLY {<ESC>[0;36m
+End.  <ESC>[1;37mK<ESC>[0;36meyword <ESC>[1;37mB<ESC>[0;36maud <ESC>[1;37mX<ESC>[0;36mit (or Enter): } T Page prompt when the document fits on one page
+
+PGHELP {<ESC>[0;35m
+N or Enter: next page   P: previous   T: first page   a number: that page
+C: continuous from here   K: keyword search   B rate: simulated baud rate
+X: exit} T Page prompt help
+
+PGFAR {<ESC>[1;31m
+Pages 1 to <TV:GALFV_PAGE> can be shown so far.} T Page number not reached yet
+
+FVWBIG {<ESC>[1;31m
+This file has more pages than can be tracked; use C for continuous.} T File too large to page through
+
+KWASK {<ESC>[0;1;36m
+Up to 6 keywords, separated by spaces (Enter to cancel): } T Ask for search keywords
+
+KWDIR {<ESC>[0;1;36m
+Search <ESC>[1;37mF<ESC>[1;36morward or <ESC>[1;37mB<ESC>[1;36mackward (Enter = forward)? } T Ask for the search direction
+
+KWWAIT {<ESC>[0;36m
+Searching... (press Enter to stop)} T A search is running
+
+KWNONE {<ESC>[1;31m
+No more matches.} T The search found nothing
+
+KWFOUND {<ESC>[1;32m
+Found "<TV:GALFV_WORD>" - press Enter for the next match.} T The search found a match on this page
+
+KABT {<ESC>[1;31m
+Search cancelled.} T The search was cancelled
+
+ASKMODE {<ESC>[0;1;36m
+<TV:GALFV_TITLE>
+View it <ESC>[1;37mP<ESC>[1;36mage by page or <ESC>[1;37mC<ESC>[1;36montinuously (Enter = page by page, <ESC>[1;37mX<ESC>[1;36m to exit)? } T Ask how to show a document
+
+FEEDBGN {<ESC>[0;36m
+(Continuous display - press Enter to stop)<ESC>[0m
+} T Continuous display is starting
+
+FEEDEND {<ESC>[0;36m
+End of <TV:GALFV_TITLE>.  Press Enter: } T Continuous display has finished
+
+FEEDSTOP {<ESC>[0;36m
+Stopped.
+} T Continuous display was stopped
+
+BAUDNOW {<ESC>[0;36m
+Simulated speed: <TV:GALFV_BAUD>.  Type B and a rate (300, 1200, 2400... or OFF) to change it.} T Shows the simulated baud rate
+
+BAUDSET {<ESC>[0;36m
+Simulated speed is now <TV:GALFV_BAUD>.} T The simulated baud rate was changed
+
+BAUDBAD {<ESC>[1;31m
+Rates from 110 to 115200 can be simulated, or OFF for full speed.} T Bad baud rate
+
+ADDNAME {<ESC>[0;1;36m
+Name for the new document (2-15 letters, digits, - or _; Enter to cancel): } T Ask for a new document's name
+
+BADNAME {<ESC>[1;31m
+Names are 2 to 15 letters, digits, - or _, starting with a letter or digit.} T Bad document name
+
+NAMETAKN {<ESC>[1;31m
+There is already a document called <TV:GALFV_DOC>.} T Document name in use
+
+ADDTITLE {<ESC>[0;1;36m
+Title for <TV:GALFV_DOC> (Enter to use the name): } T Ask for a new document's title
+
+ADDSRC {<ESC>[0;1;36m
+Where does the content come from?
+  <ESC>[1;37mU<ESC>[1;36m) Upload a file
+  <ESC>[1;37mW<ESC>[1;36m) Write it now with the editor
+  <ESC>[1;37mX<ESC>[1;36m) Cancel
+Choice: } T Content source menu
+
+ADDSRCS {<ESC>[0;1;36m
+Where does the content come from?
+  <ESC>[1;37mU<ESC>[1;36m) Upload a file
+  <ESC>[1;37mW<ESC>[1;36m) Write it now with the editor
+  <ESC>[1;37mL<ESC>[1;36m) Link a file already on the server
+  <ESC>[1;37mX<ESC>[1;36m) Cancel
+Choice: } T Content source menu for sysops
+
+ADDPATH {<ESC>[0;1;36m
+Full path of the server file to link (Enter to cancel): } T Sysop: file to link a document to
+
+ADDCANC {<ESC>[0;36m
+Nothing was added.
+} T Adding a document was cancelled
+
+UPLDONE {<ESC>[1;32m
+The file for <TV:GALFV_DOC> was received.} T Upload succeeded
+
+UPLFAIL {<ESC>[1;31m
+No file was received.} T Upload failed or was cancelled
+
+EDTQUIT {<ESC>[0;36m
+Nothing was saved.} T The editor was left without saving
+
+EDTWERR {<ESC>[1;31m
+Could not write <TV:GALFV_FILE>.} T The written document could not be saved
+
+EDTSAVED {<ESC>[1;32m
+<TV:GALFV_DOC> saved.} T The written document was saved
+
+EDTBIG {<ESC>[1;31m
+This document is too large (or is a linked server file) to edit online.
+Upload a replacement with U instead.} T Document cannot be edited online
+
+DOCHDR {<ESC>[0;1;36m
+Document <ESC>[1;33m<TV:GALFV_DOC><ESC>[0;36m - added by <TV:GALFV_OWNER> on <TV:GALFV_VALUE>, viewed <TV:GALFV_COUNT> times
+<ESC>[0;34m-----------------------------------------------------------------------
+} T Heading of a document's property menu
+
+DOCROW {<ESC>[0;36m  (<ESC>[1;37m<TV:GALFV_ITEM><ESC>[0;36m) <TV:GALFV_LABEL:L:24> <ESC>[1;37m<TV:GALFV_VALUE>
+} T One property of a document
+
+DOCPRMT {<ESC>[0;1;36m
+Number to change, <ESC>[1;37mU<ESC>[1;36mpload new content, <ESC>[1;37mW<ESC>[1;36mrite online, <ESC>[1;37mV<ESC>[1;36miew, <ESC>[1;37mX<ESC>[1;36m done: } T Document property menu prompt
+
+DOCVAL {<ESC>[0;36m
+<TV:GALFV_LABEL> is now: <ESC>[1;37m<TV:GALFV_VALUE><ESC>[0;36m
+Allowed: <TV:GALFV_LIMIT>
+New value (Enter keeps it): } T Ask for a new property value
+
+DOCSAVED {<ESC>[1;32m
+<TV:GALFV_LABEL> set to: <TV:GALFV_VALUE>} T A property was changed
+
+BADVAL {<ESC>[1;31m
+That value is not allowed; nothing was changed.} T Bad property or setting value
+
+NOTYOURS {<ESC>[1;31m
+<TV:GALFV_DOC> was added by someone else; only sysops can change it.} T The user may not change this document
+
+DELCONF {<ESC>[0;1;36m
+Delete <ESC>[1;33m<TV:GALFV_DOC><ESC>[1;36m (<TV:GALFV_TITLE>)?  This cannot be undone (<ESC>[1;37mY<ESC>[1;36m/<ESC>[1;37mN<ESC>[1;36m): } T Confirm deleting a document
+
+DELDONE {<ESC>[1;32m
+<TV:GALFV_DOC> deleted.
+} T A document was deleted
+
+SETHDR {<ESC>[0;1;36m
+File Viewer v<TV:GALFV_VERSION> Settings (changes apply immediately)
+<ESC>[0;34m-----------------------------------------------------------------------
+} T Heading of the settings page
+
+SETROW {<ESC>[0;36m  (<ESC>[1;37m<TV:GALFV_ITEM:R:2><ESC>[0;36m) <TV:GALFV_LABEL:L:34> <ESC>[1;37m<TV:GALFV_VALUE>
+} T One row of the settings page
+
+SETPRMT {<ESC>[0;1;36m
+Number to change, <ESC>[1;37mR<ESC>[1;36m to reset all to the defaults, <ESC>[1;37mX<ESC>[1;36m to go back: } T Settings page prompt
+
+SETVAL {<ESC>[0;36m
+<TV:GALFV_LABEL> is now: <ESC>[1;37m<TV:GALFV_VALUE><ESC>[0;36m
+Allowed: <TV:GALFV_LIMIT>
+New value (Enter keeps it): } T Ask for a new setting value
+
+SETSAVED {<ESC>[1;32m
+<TV:GALFV_LABEL> set to: <TV:GALFV_VALUE>} T A setting was changed
+
+SETRSTQ {<ESC>[0;1;36m
+Reset every setting to its default (<ESC>[1;37mY<ESC>[1;36m/<ESC>[1;37mN<ESC>[1;36m)? } T Confirm resetting all settings
+
+SETRSTD {<ESC>[1;32m
+All settings were reset to their defaults.} T All settings were reset
+
+HDRLIST {<ESC>[0;1;36m
+Headers (a document shows one at its top when its Header setting names it)
+<ESC>[0;34m ---------------- ------ ----------------------------------------------
+} T Header list heading
+
+HDRROW { <ESC>[1;33m<TV:GALFV_DOC:L:16> <ESC>[1;37m<TV:GALFV_VALUE:R:6> <ESC>[0;36m<TV:GALFV_TITLE>
+} T One row of the header list: name, height in lines, title
+
+HDRNONE {<ESC>[0;36m
+  There are no headers yet.
+} T The header list is empty
+
+HDRPRMT {<ESC>[0;1;36m
+Header name to change, <ESC>[1;37mA<ESC>[1;36mdd, <ESC>[1;37mD<ESC>[1;36melete, <ESC>[1;37mL<ESC>[1;36mist, <ESC>[1;37mX<ESC>[1;36m to go back: } T Header section prompt
+
+HDRNAME {<ESC>[0;1;36m
+Name for the new header (2-15 letters, digits, - or _; Enter to cancel): } T Ask for a new header's name
+
+HDRDELW {<ESC>[0;1;36m
+Name of the header to delete (Enter to cancel): } T Which header to delete
+
+HDRMHDR {<ESC>[0;1;36m
+Header <ESC>[1;33m<TV:GALFV_DOC><ESC>[0;36m - added by <TV:GALFV_OWNER> on <TV:GALFV_VALUE>
+Shown by <TV:GALFV_COUNT> document(s)
+<ESC>[0;34m-----------------------------------------------------------------------
+} T Heading of a header's property menu
+
+NOHDR {<ESC>[1;31m
+There is no header called <TV:GALFV_DOC>.
+} T Unknown header name

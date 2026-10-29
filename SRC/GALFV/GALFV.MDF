@@ -1,0 +1,29 @@
+; GALFV.MDF - File Viewer v1.3.4 for The Major BBS v10
+; Copyright (c) 2026 Elwynor Technologies
+; Originally (c) High Velocity Software, Inc.
+
+Module Name: File Viewer
+
+Developer: Elwynor Technologies
+
+Requires:
+Replaces:
+
+Install:
+
+Online user manual: GALFV.RLN
+
+DLLs: GALFV
+MSGs: GALFV
+
+Btrieve page size: 1024
+Btrieve files:     2
+
+Cleanup:
+
+Event-1:
+Event-2:
+Event-3:
+Event-4:
+
+Add-On Utility:
